@@ -1,0 +1,19 @@
+Ba diem khong tao thanh tam giac
+
+Doi qua truc Ox: (-2,-1); (0,-2); (2,-3)
+Doi qua truc Oy: (2,1); (0,2); (-2,3)
+
+Doan thang
+
+Ba diem khong tao thanh tam giac!
+
+Do dai lan luot 3 canh: 2.24, 2.24, 4.48
+Sap xep tang dan: 2.24, 2.24, 4.48
+
+Ba diem khong tao thanh tam giac!
+
+Nhap day tam giac de kiem tra:
+Tam giac co dien tich lon nhat: (3,-1); (2,2); (-2,3)
+Tam giac co chu vi lon nhat: (3,-1); (2,2); (-2,3)
+
+Khong co tam giac bang nhau

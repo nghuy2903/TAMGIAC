@@ -21,7 +21,6 @@ hc: 2
 
 
 Nhap day tam giac de kiem tra:
-Co toi da 5 tam giac tu cac diem tren
 Tam giac co dien tich lon nhat: (0,0); (0,3); (4,0)
 Tam giac co chu vi lon nhat: (0,0); (0,3); (4,0)
 
