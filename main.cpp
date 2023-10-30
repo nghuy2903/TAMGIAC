@@ -10,13 +10,43 @@ class Point{
       double getX();
       double getY();
       bool isTriangle(Point a, Point b); // Kiểm tra tam giac
-      void setReflectionAcrossOx(); // Đối qua trục Ox
+      Point* setReflectionAcrossOx(); // Đối qua trục Ox
+      Point* setReflectionAcrossOy(); // Đối qua trục Ox
       void isClassifyTriangle();// Kiểm tra tam giác gì
       int isQuadrant(); // Kiểm tra đỉnh thuộc phần tư thứ mấy
       double setCalculateSides(); // Tính giá trị của cạnh
       void quickSort(); // Sắp xếp cạnh tăng dần
       void setCalculateOther(); // Tính các giá trị khác
 };
+
+Point::Point(double x = 0, double y = 0){
+  Abscissa = x;
+  Ordinate = y;
+}
+
+double Point::getX(){
+  return Abscissa;
+}
+
+double Point::getY(){
+  return Ordinate;
+}
+
+bool Point::isTriangle(Point a, Point b){
+  if(Abscissa == a.Abscissa && a.Abscissa == b.Abscissa) return false;
+  if(Ordinate == a.Ordinate && a.Ordinate == b.Ordinate) return false;
+  else return true;
+}
+
+Point* Point::setReflectionAcrossOx(){
+  if(Abscissa!=0) Abscissa = -Abscissa;
+  return this;
+}
+
+Point* Point::setReflectionAcrossOy(){
+  if(Ordinate!=0) Ordinate = -Ordinate;
+  return this;
+}
 
 class Triangle{
   private:
@@ -30,6 +60,7 @@ class Triangle{
 };
 
 int main(){
+
 
   return 0;
 }
