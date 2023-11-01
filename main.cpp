@@ -53,6 +53,9 @@ class Point {
       /* Tính diện tích tam giác thông qua tọa độ các đỉnh*/
       double calculateAreaPoint(Point m, Point n);
 
+      /*Tính chu vi tam giác*/
+      double setPerimeterPoint(Point m, Point n);
+
       /* Sắp xếp 3 cạnh tăng dần */
       void sort(Point m, Point n); 
 
@@ -266,8 +269,14 @@ class Triangle{
   public:
     Triangle(int m);
     ~Triangle();
+    /*
+    Xét 3 điểm liền kề là 1 tam giác
+    Nếu số điểm là số lẻ thì tam giác cuối cùng lấy chung điểm của tam giác trước
+     VD: nếu số điểm là 5 thì 3 điểm đầu là 1 tam giác, điểm 3-4-5 là 1 tam giác
+    */
     void findMaxPerimeterTri(); // Tìm chu vi lớn nhất và in tam giác đó ra      
-    double maxPerimeterTri(Point a, Point b, Point c); // Tính chu vi của tam giác
+    void findMaxAreaTri(); // Tìm chu vi tam giác lớn nhất và in ra
+    void findIdenticalTri(); // Tìm 2 tam giác bằng nhau
 
 };
 
