@@ -281,6 +281,11 @@ class Triangle{
 };
 
 int main(){
+  Point a(1,1);
+  Point b(-1,3);
+  Point c(1,3);
+  
+  cout << a.calculateAreaPoint(b,c);
 
 
   return 0;
