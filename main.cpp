@@ -205,8 +205,7 @@ void Point::sort(Point m, Point n){
   cout << minSide << middleSide << maxSide;
 }
 
-int partitionHoare(Point *listPoint, int l, int r)
-{
+int partitionHoare(Point *listPoint, int l, int r) {
     int i = l - 1, j = r + 1;
     double pivot = listPoint[r].abscissa; // Chọn phần tử cuối cùng làm chốt
     while (true)
@@ -259,7 +258,7 @@ void Point::setCalculateOther(Point m, Point n) {
   cout << "Cac duong cao lan luot la: " << Ha << ","  << Ha << ","  << Hc << "(m)\n"; 
 }
 
-class Triangle{
+class Triangle {
   private:
     int n; // Số lượng các điểm có trong không gian
     Point* ds; // Mảng chứa n điểm
@@ -268,11 +267,10 @@ class Triangle{
     ~Triangle();
     void findMaxPerimeterTri(); // Tìm chu vi lớn nhất và in tam giác đó ra      
     double maxPerimeterTri(Point a, Point b, Point c); // Tính chu vi của tam giác
-
+    
 };
 
 int main(){
-
-
+  
   return 0;
 }

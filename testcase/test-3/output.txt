@@ -1,0 +1,28 @@
+Tam giac duoc tao thanh: (0,0); (1,0); (0,1)
+Dien tich: 0.35
+Chu vi: 3.41
+
+Doi qua truc Ox: (0,0); (1,0); (0,-1)
+Doi qua truc Oy: (0,0); (-1,0); (0,1)
+
+Tam giac vuong can
+
+Dinh (0,0) thuoc goc toa do
+Dinh (1,0) thuoc goc phan tu thu I
+Dinh (0,1) thuoc goc phan tu thu II
+
+Do dai lan luot 3 canh: 1, 1.41, 1
+Sap xep tang dan: 1, 1, 1.41
+
+Cac goc lan luot: 90, 45, 45 (rad)
+ha: 1
+hb: 1
+hc: 2.82
+
+Nhap day tam giac de kiem tra:
+Tam giac co dien tich lon nhat: (0,0); (0,3); (4,0)
+Tam giac co chu vi lon nhat: (0,0); (0,3); (4,0)
+
+Cac tam giac bang nhau:
+(0,0); (2,0); (4,0) va (4,0); (2,0); (2,2)
+
