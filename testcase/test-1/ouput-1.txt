@@ -24,5 +24,3 @@ Nhap day tam giac de kiem tra:
 Tam giac co dien tich lon nhat: (0,0); (0,3); (4,0)
 Tam giac co chu vi lon nhat: (0,0); (0,3); (4,0)
 
-Cac tam giac bang nhau:
-(0,0); (2,0); (4,0) va (4,0); (2,0); (2,2)
