@@ -1,28 +1,28 @@
-Tam giac duoc tao thanh: (0,0); (1,0); (0,1)
-Dien tich: 0.35
-Chu vi: 3.41
-
-Doi qua truc Ox: (0,0); (1,0); (0,-1)
-Doi qua truc Oy: (0,0); (-1,0); (0,1)
-
-Tam giac vuong can
-
+Ba diem da cho (0,0) (3,0) (0,4) tao thanh Tam giac vuong
+Dien tich: 6
+Chu vi: 12
+Do dai lan luot 3 canh: 3, 4, 5
+Sap xep tang dan 3 canh: 3, 4, 5
+Cac goc lan luot la: 36.8886, 53.1571, 90.0456(do)
+Cac duong cao lan luot la: 4, 4, 2.4
+Doi xung qua Ox: (0,0) (3,0) (0,-4)
+Doi xung qua Oy: (0,0) (-3,0) (0,4)
 Dinh (0,0) thuoc goc toa do
-Dinh (1,0) thuoc goc phan tu thu I
-Dinh (0,1) thuoc goc phan tu thu II
+Dinh (3,0) thuoc goc phan tu thu IV
+Dinh (0,4) thuoc goc phan tu thu II
 
-Do dai lan luot 3 canh: 1, 1.41, 1
-Sap xep tang dan: 1, 1, 1.41
-
-Cac goc lan luot: 90, 45, 45 (rad)
-ha: 1
-hb: 1
-hc: 2.82
-
-Nhap day tam giac de kiem tra:
-Tam giac co dien tich lon nhat: (0,0); (0,3); (4,0)
-Tam giac co chu vi lon nhat: (0,0); (0,3); (4,0)
-
-Cac tam giac bang nhau:
-(0,0); (2,0); (4,0) va (4,0); (2,0); (2,2)
-
+Tap diem ban dau la:
+(6,7)
+(1,2)
+(-2,3)
+(-4,2)
+(3,1)
+(2,-2)
+Tam giac co dien tich lon nhat la: (6,7) (1,2) (-2,3)
+Sap xep tap diem theo hoanh do tang dan la:
+(-4,2)
+(-2,3)
+(1,2)
+(2,-2)
+(3,1)
+(6,7)

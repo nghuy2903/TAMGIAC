@@ -1,0 +1,22 @@
+Ba diem da cho (0,0) (1,0) (0,1) tao thanh Tam giac can
+Dien tich: 0.5
+Chu vi: 3.41421
+Do dai lan luot 3 canh: 1, 1, 1.41421
+Sap xep tang dan 3 canh: 1, 1.41421, 1.41421
+Cac goc lan luot la: 45.0228, 45.0228, 90.0456(do)
+Cac duong cao lan luot la: 1, 1, 0.707107
+Doi xung qua Ox: (0,0) (1,0) (0,-1)
+Doi xung qua Oy: (0,0) (-1,0) (0,1)
+Dinh (0,0) thuoc goc toa do
+Dinh (1,0) thuoc goc phan tu thu IV
+Dinh (0,1) thuoc goc phan tu thu II
+
+Tap diem ban dau la:
+(0,0)
+(0,0)
+(0,0)
+Khong ton tai tam giac nao!
+Sap xep tap diem theo hoanh do tang dan la:
+(0,0)
+(0,0)
+(0,0)
