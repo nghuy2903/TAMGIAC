@@ -3,6 +3,11 @@ using namespace std;
 
 const double PI = 3.14;
 
+/*
+CHƯA IN RA CẠNH TĂNG DẦN
+COI LẠI CHỖ ĐƯỜNG CAO
+GÓC ĐỂ pi cho gọn
+*/
 
 class Point {
     private:
@@ -19,12 +24,12 @@ class Point {
       bool isTriangle(Point a, Point b);
 
       /* Đối qua trục Ox */
-      Point* setReflectionAcrossOx();
-      friend Point* setReflectionAcrossOx(Point *p);
+      Point setReflectionAcrossOx() const;
+      // friend Point* setReflectionAcrossOx(Point *p);
 
       /* Đối qua trục Oy */
-      Point* setReflectionAcrossOy();
-      friend Point* setReflectionAcrossOy(Point *p);
+      Point setReflectionAcrossOy() const;
+      // friend Point* setReflectionAcrossOy(Point *p);
 
       /*
       Trả về khóa tương ứng với loại tam giác:
@@ -42,6 +47,7 @@ class Point {
       
       /* Kiểm tra đỉnh thuộc phần tư thứ mấy */
       int isQuadrant();
+      void printQuadrant();
 
       /* Tính độ dài của cạnh */
       double calculateSides(Point other);
@@ -54,7 +60,7 @@ class Point {
       double calculateAreaPoint(Point m, Point n);
 
       /*Tính chu vi tam giác*/
-      double setPerimeterPoint(Point m, Point n);
+      double calculatePerimeterPoint(Point m, Point n);
 
       /* Sắp xếp 3 cạnh tăng dần */
       void sort(Point m, Point n); 
@@ -65,6 +71,8 @@ class Point {
 
       /* Tính các giá trị khác */
       void setCalculateOther(Point m, Point n);
+
+      friend class Triangle;
 };
 
 Point::Point(double x = 0, double y = 0){
@@ -86,9 +94,10 @@ bool Point::isTriangle(Point a, Point b){
   else return true;
 }
 
-Point* Point::setReflectionAcrossOx(){
-  if(abscissa!=0) abscissa = -abscissa;
-  return this;
+Point Point::setReflectionAcrossOx() const{
+  Point res = *this;
+  if(res.abscissa!=0) res.abscissa = -res.abscissa;
+  return res;
 }
 /*
 Point* setReflectionAcrossOx(Point *p){
@@ -98,9 +107,10 @@ Point* setReflectionAcrossOx(Point *p){
 }
 */
 
-Point* Point::setReflectionAcrossOy(){
-  if(ordinate!=0) ordinate = -ordinate;
-  return this;
+Point Point::setReflectionAcrossOy() const{
+  Point res = *this;
+  if(res.ordinate!=0) res.ordinate = -res.ordinate;
+  return res;
 }
 /*
 Point* setReflectionAcrossOy(Point *p){
@@ -162,6 +172,15 @@ int Point::isQuadrant() {
     return 4; // Goc phan tu thu IV
 }
 
+void Point::printQuadrant(){
+  string res;
+  if(this->isQuadrant() == 1) res = "I";
+  else if(this->isQuadrant() == 2) res = "II";
+  else if(this->isQuadrant() == 3) res = "III";
+  else res = "IV";
+  cout << "Dinh (" << this->getX() << "," << this->getY() << ") thuoc pha tu thu " << res << endl; 
+}
+
 double Point::calculateAreaHeron(Point m, Point n) {
   double a = this->calculateSides(m);
   double b = this->calculateSides(n);
@@ -177,6 +196,13 @@ double Point::calculateAreaPoint(Point m, Point n) {
   double x3 = n.abscissa, y3 = n.ordinate;
 
   return 0.5 * abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)));
+}
+
+double Point::calculatePerimeterPoint(Point m, Point n){
+  double x = this->calculateSides(m);
+  double y = this->calculateSides(n);
+  double z = m.calculateSides(n);
+  return x+y+z;
 }
 
 double Point::calculateSides(Point other){
@@ -258,14 +284,14 @@ void Point::setCalculateOther(Point m, Point n) {
   double Hb = (2 * S) / b;
   double Hc = (2 * S) / c;
 
-  cout << "Cac goc lan luot la: " << angleA << ","  << angleB << ","  << angleC << "(degree)\n"; 
-  cout << "Cac duong cao lan luot la: " << Ha << ","  << Ha << ","  << Hc << "(m)\n"; 
+  cout << "\nCac goc lan luot la: " << angleA << ","  << angleB << ","  << angleC << "(degree)\n"; 
+  cout << "Cac duong cao lan luot la: " << Ha << ","  << Ha << ","  << Hc << "\n"; 
 }
 
 class Triangle{
   private:
     int n; // Số lượng các điểm có trong không gian
-    Point* ds; // Mảng chứa n điểm
+    Point* arr; // Mảng chứa n điểm
   public:
     Triangle(int m);
     ~Triangle();
@@ -276,16 +302,94 @@ class Triangle{
     */
     void findMaxPerimeterTri(); // Tìm chu vi lớn nhất và in tam giác đó ra      
     void findMaxAreaTri(); // Tìm chu vi tam giác lớn nhất và in ra
-    void findIdenticalTri(); // Tìm 2 tam giác bằng nhau
-
+    void inPut();
+    
 };
 
+Triangle::Triangle(int m = 0){
+  n = m;
+  arr = new Point[n];
+}
+
+void Triangle::inPut(){
+  cin >> n;
+  arr = new Point[n];
+  for(int i=0; i<n; i++){
+    double x, y; cin >> x >> y;
+    arr[i].ordinate = x;
+    arr[i].abscissa = y;
+  }
+}
+
+void Triangle::findMaxPerimeterTri() {
+  double maxArea = 0;
+  Point maxTri[3]; // Lưu tam giác có diện tích lớn nhất
+  for (int i = 0; i < n - 2; i++) {
+    int j = i+1, k = j+1;
+    double area = arr[i].calculateAreaPoint(arr[j], arr[k]) ;
+    if(area > maxArea){
+      maxArea = area;
+      maxTri[0] = arr[i];
+      maxTri[1] = arr[j];
+      maxTri[2] = arr[k];
+    }
+    }
+    if (maxArea > 0) cout << "Tam giac co dien tich lon nhat la: (" << maxTri[0].getX() << ", " << maxTri[0].getY() << "); (" << maxTri[1].getX() << ", " << maxTri[1].getY() << "); (" << maxTri[2].getX() << ", " << maxTri[2].getY() << ")" << endl;
+    else cout << "Khong ton tai tam giac!" << endl;
+}
+
+void Triangle::findMaxAreaTri(){
+    double maxPetre = 0;
+    Point maxTri[3]; // Lưu tam giác có diện tích lớn nhất
+    for (int i = 0; i < n - 2; i++) {
+      int j = i+1, k = j+1;
+      double area = arr[i].calculatePerimeterPoint(arr[j], arr[k]) ;
+      if(area > maxPetre){
+        maxPetre = area;
+        maxTri[0] = arr[i];
+        maxTri[1] = arr[j];
+        maxTri[2] = arr[k];
+      }
+    }
+    if (maxPetre) cout << "Tam giac co chu vi lon nhat la: (" << maxTri[0].getX() << ", " << maxTri[0].getY() << "); (" << maxTri[1].getX() << ", " << maxTri[1].getY() << "); (" << maxTri[2].getX() << ", " << maxTri[2].getY() << ")" << endl;
+    else cout << "Khong ton tai tam giac!" << endl;
+}
+
+
 int main(){
-  Point a(1,1);
-  Point b(-1,3);
-  Point c(1,3);
+  Point a(1,1), b(-1,1), c(1,3);
+  if(a.isTriangle(b,c)){ 
+    cout << "Tam giac duoc tao thanh: (" << a.getX() << "," << a.getY() << "); ("  << b.getX() << ", " << b.getY() << "); (" << c.getX() << ", " << c.getY() << ")" << endl;
+    cout << "Dien tich: " << a.calculateAreaPoint(b,c) << endl;
+    cout << "Chu vi: " << a.calculatePerimeterPoint(b,c) << endl;
+  }
+  else cout << "Khong tao thanh tam giac!\n";
   
-  cout << a.calculateAreaPoint(b,c);
+  Point x = a.setReflectionAcrossOx(), y = b.setReflectionAcrossOx(), z = c.setReflectionAcrossOx();
+  cout << "\nDoi qua truc 0x: (" <<  x.getX() << "," << x.getY() << "); (" << y.getX() << ", " << y.getY() << "); (" << z.getX() << ", " << z.getY() << ")" << endl;
+
+
+  Point u = a.setReflectionAcrossOy(), v = b.setReflectionAcrossOy(), w = c.setReflectionAcrossOy();
+  cout << "Doi qua truc 0y: (" <<  u.getX() << "," << u.getY() << "); (" << v.getX() << ", " << v.getY() << "); (" << w.getX() << ", " << w.getY() << ")" << endl;
+
+
+  cout << endl;
+  a.isClassifyTriangle(b,c);
+
+  cout << endl;
+  a.printQuadrant();
+  b.printQuadrant();
+  c.printQuadrant();
+
+  cout << "\nDo dai lan luot 3 canh: " << a.calculateSides(b) << "; " << a.calculateSides(c) << "; " << b.calculateSides(c) << endl;
+  
+  a.setCalculateOther(b,c);
+
+  Triangle tg;
+
+  tg.inPut();
+  tg.findMaxPerimeterTri();
+  tg.findMaxPerimeterTri();
 
 
   return 0;
