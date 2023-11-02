@@ -183,7 +183,6 @@ int Point::mapKeyForTriangle(Point m, Point n) {
 
 void Point::isClassifyTriangle(Point m, Point n) {
   int key = mapKeyForTriangle(m, n);
-  cout << key;
   switch (key)
   {
     case 1:
